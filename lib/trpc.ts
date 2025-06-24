@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { initTRPC, TRPCError } from "@trpc/server";
 import { auth } from "./auth";
 import { prisma } from "./prisma";
