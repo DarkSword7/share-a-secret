@@ -11,12 +11,20 @@ import { ZodError } from "zod";
  * This section defines the "contexts" that are available in the backend API.
  */
 export const createTRPCContext = async (opts: { req?: Request }) => {
-  const session = await auth();
+  try {
+    const session = await auth();
 
-  return {
-    session,
-    prisma,
-  };
+    return {
+      session,
+      prisma,
+    };
+  } catch (error) {
+    console.error("Error creating tRPC context:", error);
+    return {
+      session: null,
+      prisma,
+    };
+  }
 };
 
 type Context = Awaited<ReturnType<typeof createTRPCContext>>;

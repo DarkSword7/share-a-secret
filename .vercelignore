@@ -1,0 +1,16 @@
+# Prisma migrations (not needed for deployment)
+
+prisma/migrations
+
+# Development files
+
+.env.local
+.env.example
+
+# Node modules (handled by Vercel)
+
+node_modules
+
+# Build outputs (Vercel handles this)
+
+.next
