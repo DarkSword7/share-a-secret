@@ -34,7 +34,6 @@ export default function SecretViewPage() {
   const [error, setError] = useState<string | null>(null);
   const [showPasswordInput, setShowPasswordInput] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     setMounted(true);
@@ -79,13 +78,6 @@ export default function SecretViewPage() {
     getSecretMutation.mutate({ token });
   };
 
-  const handleCopySecret = async () => {
-    if (secretContent) {
-      await navigator.clipboard.writeText(secretContent);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    }
-  };
   if (isLoadingInfo) {
     return (
       <Container maxWidth="md" sx={{ py: 8, textAlign: "center" }}>
